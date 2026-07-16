@@ -84,6 +84,12 @@
   @media(max-width:900px){.wall{grid-template-columns:repeat(2,1fr)}.tile-overlay{opacity:1;background:linear-gradient(to top,rgba(6,7,8,.9),transparent 60%)}}
   @media(max-width:560px){.wall{grid-template-columns:1fr}.tile{aspect-ratio:16/10}}
 
+  /* SCROLL REVEAL */
+  .js-intro .reveal{opacity:0;transform:translateY(22px)}
+  .reveal{transition:opacity .8s ease,transform .8s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (hover:none){.tile.in-view .tile-art{filter:grayscale(0)}}
+
   /* OTHER — smaller cards with hover description */
   .other-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
   .scroll-nav{display:flex;gap:8px;flex-shrink:0}
@@ -186,7 +192,7 @@
   <div class="loc">Buenos Aires</div>
 </header>
 
-<section id="work">
+<section id="work" class="reveal">
   <div class="wrap sec-head">
     <div class="eyebrow" data-en="Featured Work" data-es="Trabajos Destacados">Featured Work</div>
     <h2 data-en="Selected pieces" data-es="Piezas seleccionadas">Selected pieces</h2>
@@ -201,7 +207,7 @@
   </div>
 </section>
 
-<section id="other" class="gallery">
+<section id="other" class="gallery reveal">
   <div class="wrap">
     <div class="sec-head other-head">
       <div>
@@ -232,7 +238,7 @@
   </div>
 </section>
 
-<section id="about" class="about">
+<section id="about" class="about reveal">
   <div class="wrap about-grid">
     <div>
       <div class="eyebrow" data-en="About" data-es="El Estudio">About</div>
@@ -248,7 +254,7 @@
   </div>
 </section>
 
-<section id="contact" class="contact">
+<section id="contact" class="contact reveal">
   <div class="wrap">
     <div class="eyebrow" data-en="Let's work" data-es="Trabajemos">Let's work</div>
     <h2 data-en="A project that <em>needs sound</em>?" data-es="¿Un proyecto que <em>necesita sonido</em>?">A project that <em>needs sound</em>?</h2>
@@ -360,6 +366,22 @@
   document.getElementById('lb-close').addEventListener('click', closeLight);
   lb.addEventListener('click', e => { if(e.target === lb) closeLight(); });
   document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLight(); });
+
+  /* Scroll reveal — sections fade in; Featured tiles colorize on touch as they enter view */
+  if('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          e.target.classList.add(e.target.classList.contains('tile') ? 'in-view' : 'in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.18, rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('.reveal, .tile').forEach(el => io.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+    document.querySelectorAll('.tile').forEach(el => el.classList.add('in-view'));
+  }
 </script>
 </body>
 </html>
