@@ -99,6 +99,7 @@
   .ocard:hover .tile-art{transform:scale(1.05);filter:grayscale(0)}
   .ocard .ocard-ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;background:linear-gradient(to top,rgba(6,7,8,.94),rgba(6,7,8,.15) 60%,transparent);opacity:0;transition:opacity .4s}
   .ocard:hover .ocard-ov{opacity:1}
+  @media (hover: none){.ocard .ocard-ov{opacity:1}}
   .ocard h3{font-size:17px;font-weight:400}
   .ocard .role{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ice);margin-top:6px}
   .ocard .desc-txt{font-size:12px;color:var(--fog);opacity:.82;margin-top:10px;line-height:1.5}
@@ -322,6 +323,7 @@
 
   const lb = document.getElementById('lightbox'), lbFrame = document.getElementById('lb-frame');
   const soonTxt = () => document.documentElement.lang === 'es' ? 'Video próximamente' : 'Video coming soon';
+  let audioWasPlaying = false;
   /* Featured tiles: set data-video="vimeo:ID" or data-video="yt:ID" to play. */
   const openVideo = (video) => {
     lb.classList.remove('img');
@@ -331,6 +333,7 @@
         ? 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1&autoplay=1'
         : 'https://player.vimeo.com/video/' + id + '?title=0&byline=0&portrait=0&autoplay=1';
       lbFrame.innerHTML = '<iframe src="' + src + '" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+      if(audio && !audio.paused){ audio.pause(); audioWasPlaying = true; }
     } else { lbFrame.innerHTML = '<div class="soon">' + soonTxt() + '</div>'; }
     lb.classList.add('open');
   };
@@ -339,7 +342,7 @@
     lbFrame.innerHTML = src ? '<img class="lb-img" src="' + src + '" alt="" />' : '<div class="soon">' + (document.documentElement.lang === 'es' ? 'Imagen próximamente' : 'Image coming soon') + '</div>';
     lb.classList.add('open');
   };
-  const closeLight = () => { lb.classList.remove('open'); lbFrame.innerHTML = ''; };
+  const closeLight = () => { lb.classList.remove('open'); lbFrame.innerHTML = ''; if(audioWasPlaying){ audio.play().catch(() => {}); audioWasPlaying = false; } };
   document.querySelectorAll('.tile, .ocard').forEach(t => t.addEventListener('click', () => {
     if(t.classList.contains('img-only')) openImage((t.querySelector('.tile-art').getAttribute('data-img') || '').trim());
     else openVideo((t.getAttribute('data-video') || '').trim());
