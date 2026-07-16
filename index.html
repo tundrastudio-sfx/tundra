@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tundra Studio — Sound Design · Score · Audio Post</title>
+<meta name="description" content="Tundra Studio — sound design, original score and audio post for advertising, brands, film and live shows. Buenos Aires." />
+<link rel="icon" href="assets/tundra-logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@300;400&display=swap" rel="stylesheet" />
+<script>if(!window.matchMedia||!window.matchMedia('(prefers-reduced-motion: reduce)').matches){document.documentElement.classList.add('js-intro')}</script>
+<style>
+  :root{--charcoal:#0A0B0C;--charcoal-deep:#141517;--ice:#B0C4D4;--ice-dim:#8fa3b3;--fog:#e8edf1;--line:rgba(176,196,212,.15)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--charcoal);color:var(--fog);font-family:'Inter',system-ui,sans-serif;font-weight:300;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-.01em;line-height:1.1}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  section{padding:96px 0;border-top:1px solid var(--line)}
+  .eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--ice-dim)}
+  .mark.fallback{display:none}
+  img.mark.broken{display:none}
+  img.mark.broken + .mark.fallback{display:inline-block}
+
+  /* INTRO ANIMATION */
+  #intro{display:none}
+  .js-intro #intro{display:flex;position:fixed;inset:0;z-index:200;background:var(--charcoal);align-items:center;justify-content:center;transition:opacity .9s ease}
+  #intro.done{opacity:0;pointer-events:none}
+  #intro .intro-logo{height:clamp(150px,26vw,320px);width:auto;color:var(--ice);opacity:0;animation:introIn 2.1s cubic-bezier(.2,.7,.2,1) forwards}
+  #intro svg.intro-logo{display:none}
+  #intro img.intro-logo.broken{display:none}
+  #intro img.intro-logo.broken + svg.intro-logo{display:block}
+  @keyframes introIn{0%{opacity:0;transform:scale(1.32)}22%{opacity:1;transform:scale(1.2)}68%{opacity:1;transform:scale(1.12)}100%{opacity:1;transform:scale(1)}}
+  .js-intro .masthead .mark,.js-intro .masthead .word,.js-intro .masthead .desc,.js-intro .masthead .loc{opacity:0;transform:translateY(16px)}
+  body.revealed .masthead .mark{animation:rise .8s ease 0s forwards}
+  body.revealed .masthead .word{animation:rise .8s ease .14s forwards}
+  body.revealed .masthead .desc{animation:rise .8s ease .3s forwards}
+  body.revealed .masthead .loc{animation:rise .8s ease .46s forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* SOUND TOGGLE */
+  .sound-btn{position:fixed;bottom:22px;right:22px;z-index:60;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(8,9,10,.8);backdrop-filter:blur(6px);color:var(--ice);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:border-color .2s,color .2s}
+  .sound-btn:hover{border-color:var(--ice-dim);color:var(--fog)}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(8,9,10,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:16px;letter-spacing:.2em;text-transform:uppercase;color:var(--fog)}
+  .brand .mark{height:22px;width:auto;color:var(--ice)}
+  .navlinks{display:flex;gap:26px;align-items:center;font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+  .navlinks a{color:var(--ice-dim);transition:color .2s}
+  .navlinks a:hover{color:var(--fog)}
+  .lang-toggle{border:1px solid var(--line);border-radius:100px;padding:4px 5px;display:flex;gap:2px;cursor:pointer}
+  .lang-toggle button{background:none;border:none;color:var(--ice-dim);cursor:pointer;padding:3px 10px;border-radius:100px;font-family:inherit;font-size:11px;letter-spacing:.1em;transition:all .2s}
+  .lang-toggle button.active{background:var(--ice);color:var(--charcoal-deep)}
+  @media(max-width:680px){.navlinks a.nav-hide{display:none}}
+
+  /* MASTHEAD (compact — gallery is the first big visual) */
+  .masthead{text-align:center;padding:130px 0 56px;border-top:none;position:relative}
+  .masthead::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 0%,rgba(176,196,212,.10),transparent 55%);pointer-events:none}
+  .masthead .mark{height:clamp(74px,10vw,112px);width:auto;color:var(--ice);margin-bottom:24px}
+  .masthead .word{font-family:'Fraunces',serif;font-weight:300;font-size:clamp(30px,5vw,52px);letter-spacing:.16em;text-transform:uppercase;color:var(--fog)}
+  .masthead .desc{margin-top:16px;font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--ice)}
+  .masthead .loc{margin-top:12px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--ice-dim)}
+
+  /* GALLERY (shared) */
+  .sec-head{margin-bottom:32px}
+  .sec-head .eyebrow{margin-bottom:12px}
+  .sec-head h2{font-size:clamp(24px,3.4vw,36px);font-weight:300}
+  .sec-note{color:var(--ice-dim);font-size:14px;margin-top:10px;max-width:52ch}
+  .gallery{padding:70px 0 0;border-top:1px solid var(--line)}
+  #work{padding-top:64px}
+  .wall{display:grid;grid-template-columns:repeat(3,1fr);gap:0;width:100%}
+  .tile{position:relative;aspect-ratio:4/5;overflow:hidden;cursor:pointer;background:var(--charcoal-deep);border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tile-art{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;background-image:linear-gradient(150deg,#17191b,#0a0b0c);filter:grayscale(.4);transition:transform .8s ease,filter .5s ease}
+  .tile:hover .tile-art{transform:scale(1.06);filter:grayscale(0)}
+  .tile-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;background:linear-gradient(to top,rgba(6,7,8,.9),rgba(6,7,8,.05) 55%,transparent);opacity:0;transition:opacity .4s}
+  .tile:hover .tile-overlay{opacity:1}
+  .tile h3{font-size:19px;font-weight:400}
+  .tile .role{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ice);margin-top:7px}
+  .tile .play{position:absolute;top:22px;right:22px;width:38px;height:38px;border:1px solid var(--ice-dim);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ice)}
+  @media(max-width:900px){.wall{grid-template-columns:repeat(2,1fr)}.tile-overlay{opacity:1;background:linear-gradient(to top,rgba(6,7,8,.9),transparent 60%)}}
+  @media(max-width:560px){.wall{grid-template-columns:1fr}.tile{aspect-ratio:16/10}}
+
+  /* OTHER — smaller cards with hover description */
+  .other-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px}
+  .scroll-nav{display:flex;gap:8px;flex-shrink:0}
+  .scroll-nav button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ice);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s}
+  .scroll-nav button:hover{border-color:var(--ice-dim);color:var(--fog)}
+  .other-scroll{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 16px;scrollbar-width:thin;scrollbar-color:var(--ice-dim) transparent}
+  .other-scroll .ocard{flex:0 0 clamp(240px,27vw,300px);scroll-snap-align:start}
+  .other-scroll::-webkit-scrollbar{height:6px}
+  .other-scroll::-webkit-scrollbar-thumb{background:var(--ice-dim);border-radius:10px}
+  .other-scroll::-webkit-scrollbar-track{background:rgba(176,196,212,.08);border-radius:10px}
+  .ocard{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:10px;border:1px solid var(--line);cursor:pointer;background:var(--charcoal-deep)}
+  .ocard .tile-art{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;background-image:linear-gradient(150deg,#17191b,#0a0b0c);filter:grayscale(.45);transition:transform .8s ease,filter .5s ease}
+  .ocard:hover .tile-art{transform:scale(1.05);filter:grayscale(0)}
+  .ocard .ocard-ov{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;background:linear-gradient(to top,rgba(6,7,8,.94),rgba(6,7,8,.15) 60%,transparent);opacity:0;transition:opacity .4s}
+  .ocard:hover .ocard-ov{opacity:1}
+  .ocard h3{font-size:17px;font-weight:400}
+  .ocard .role{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ice);margin-top:6px}
+  .ocard .desc-txt{font-size:12px;color:var(--fog);opacity:.82;margin-top:10px;line-height:1.5}
+  @media(max-width:640px){.scroll-nav{display:none}.other-scroll .ocard{flex:0 0 78vw}}
+
+  /* LIGHTBOX */
+  .lightbox{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.95);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:6vw}
+  .lightbox.open{display:flex}
+  .lightbox .frame{position:relative;width:100%;max-width:1000px;aspect-ratio:16/9;background:#000;display:flex;align-items:center;justify-content:center}
+  .lightbox.img .frame{aspect-ratio:auto;max-width:none;width:auto;background:transparent}
+  .lightbox .frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .lightbox .lb-img{max-height:84vh;max-width:90vw;display:block}
+  .lightbox .soon{color:var(--ice-dim);font-family:'Fraunces',serif;font-style:italic;font-size:20px}
+  .lightbox .close{position:absolute;top:26px;right:30px;background:none;border:none;color:var(--fog);font-size:30px;line-height:1;cursor:pointer;opacity:.8}
+  .lightbox .close:hover{opacity:1}
+
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:60px;align-items:start}
+  .about h2{font-size:clamp(26px,3.6vw,40px);font-weight:300}
+  .about h2 em{font-style:italic;color:var(--ice)}
+  .about p{color:var(--fog);opacity:.85;font-size:16px;margin-bottom:16px}
+  .svc-line{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ice-dim);margin:6px 0 34px}
+  .svc-line span{color:var(--ice)}
+  .credit-list{display:flex;flex-wrap:wrap;gap:10px}
+  .credit-list span{border:1px solid var(--line);border-radius:100px;padding:8px 16px;font-size:12px;color:var(--ice);letter-spacing:.03em}
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;gap:28px}}
+
+  /* CONTACT */
+  .contact{text-align:center;padding-bottom:0}
+  .contact h2{font-size:clamp(30px,5.5vw,58px);font-weight:300;margin-bottom:28px}
+  .contact h2 em{font-style:italic;color:var(--ice)}
+  .contact .mail{font-family:'Fraunces',serif;font-size:clamp(20px,3vw,30px);color:var(--ice);border-bottom:1px solid var(--ice-dim);padding-bottom:4px;transition:opacity .2s}
+  .contact .mail:hover{opacity:.7}
+  .contact .links{margin-top:36px;display:flex;gap:26px;justify-content:center;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--ice-dim)}
+  .contact .links a:hover{color:var(--fog)}
+
+  footer{padding:70px 0 54px;text-align:center;color:var(--ice-dim);font-size:12px;letter-spacing:.06em;border-top:1px solid var(--line);margin-top:110px}
+  footer .mark{height:36px;width:auto;color:var(--ice-dim);opacity:.7;margin-bottom:14px}
+  footer .name{font-family:'Fraunces',serif;letter-spacing:.2em;text-transform:uppercase;color:var(--ice-dim);margin-bottom:8px}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="tundra-mark" viewBox="0 0 140 94">
+    <g fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M52 62 Q60 40 66 13 Q72 40 82 60" />
+      <path d="M14 66 Q44 62 66 42 Q90 62 130 58" />
+      <path d="M12 77 Q44 73 66 54 Q92 73 128 71" />
+      <path d="M18 87 Q46 84 66 69 Q92 84 120 83" />
+      <path d="M35 64 Q39 47 46 30" opacity="0.92" />
+    </g>
+  </symbol>
+</svg>
+
+<div id="intro" aria-hidden="true">
+  <img class="intro-logo" src="assets/tundra-logo.png" alt="Tundra Studio" onerror="this.classList.add('broken')" /><svg class="intro-logo" viewBox="0 0 140 94" width="240" height="160"><use href="#tundra-mark"/></svg>
+</div>
+
+<audio id="introAudio" loop preload="none"><source src="assets/intro-loop.mp3" type="audio/mpeg" /><source src="assets/intro-loop.ogg" type="audio/ogg" /></audio>
+<button class="sound-btn" id="soundBtn" aria-label="Toggle sound"></button>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="brand"><img class="mark logo" src="assets/tundra-logo.png" alt="Tundra" onerror="this.classList.add('broken')" /><svg class="mark fallback"><use href="#tundra-mark"/></svg><span>Tundra</span></a>
+    <div class="navlinks">
+      <a href="#work" class="nav-hide" data-en="Work" data-es="Trabajos">Work</a>
+      <a href="#other" class="nav-hide" data-en="Other" data-es="Otros">Other</a>
+      <a href="#about" class="nav-hide" data-en="About" data-es="Estudio">About</a>
+      <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+      <div class="lang-toggle" role="group" aria-label="Language">
+        <button data-lang="en" class="active">EN</button>
+        <button data-lang="es">ES</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<header class="masthead" id="top">
+  <img class="mark logo" src="assets/tundra-logo.png" alt="Tundra Studio" onerror="this.classList.add('broken')" /><svg class="mark fallback"><use href="#tundra-mark"/></svg>
+  <div class="word">Tundra Studio</div>
+  <div class="desc">Sound Design · Score · Audio Post</div>
+  <div class="loc">Buenos Aires</div>
+</header>
+
+<section id="work">
+  <div class="wrap sec-head">
+    <div class="eyebrow" data-en="Featured Work" data-es="Trabajos Destacados">Featured Work</div>
+    <h2 data-en="Selected pieces" data-es="Piezas seleccionadas">Selected pieces</h2>
+  </div>
+  <div class="wall">
+    <div class="tile" data-video="yt:gZhAuUTndEQ"><div class="tile-art" data-img="assets/work/bizapop.jpg"></div><div class="tile-overlay"><div class="play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg></div><h3>Bizarrap — Bizapop</h3><div class="role" data-en="Sound Design · Foley · Mix · Score" data-es="Diseño de Sonido · Foley · Mezcla · Banda Sonora">Sound Design · Foley · Mix · Score</div></div></div>
+    <div class="tile" data-video="yt:6D10_CDFwJ0"><div class="tile-art" data-img="assets/work/rauw.jpg"></div><div class="tile-overlay"><div class="play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg></div><h3>Rauw Alejandro — Cosa Nuestra</h3><div class="role" data-en="Sound Design · Dialogue Edit · Foley · Mix" data-es="Diseño de Sonido · Edición de Diálogos · Foley · Mezcla">Sound Design · Dialogue Edit · Foley · Mix</div></div></div>
+    <div class="tile" data-video="yt:QCZB48D77n8"><div class="tile-art" data-img="assets/work/adidas-bzrp.jpg"></div><div class="tile-overlay"><div class="play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg></div><h3>Adidas — Forum 2000 x BZRP</h3><div class="role" data-en="Advertising · Sound Design · Foley · Mix" data-es="Publicidad · Diseño de Sonido · Foley · Mezcla">Advertising · Sound Design · Foley · Mix</div></div></div>
+    <div class="tile" data-video="yt:jbP2dRA9Gbs"><div class="tile-art" data-img="assets/work/kinderland.jpg"></div><div class="tile-overlay"><div class="play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg></div><h3>Kinderland</h3><div class="role" data-en="Advertising · Sound Design · Foley · Mix" data-es="Publicidad · Diseño de Sonido · Foley · Mezcla">Advertising · Sound Design · Foley · Mix</div></div></div>
+    <div class="tile" data-video="yt:GHnkC5XJaTk"><div class="tile-art" data-img="assets/work/bzrat.jpg"></div><div class="tile-overlay"><div class="play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg></div><h3>Bizarrap — Music Session #55 · Teaser</h3><div class="role" data-en="Sound Design · Original Music · Foley · Mix" data-es="Diseño de Sonido · Música Original · Foley · Mezcla">Sound Design · Original Music · Foley · Mix</div></div></div>
+    <div class="tile" data-video="yt:J3qDc6aR9T4"><div class="tile-art" data-img="assets/work/snipez.jpg"></div><div class="tile-overlay"><div class="play"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><polygon points="8,5 19,12 8,19"/></svg></div><h3>LIT Killah — SnipeZ</h3><div class="role" data-en="Album Teaser · Sound Design · Foley · Mix" data-es="Teaser de Álbum · Diseño de Sonido · Foley · Mezcla">Album Teaser · Sound Design · Foley · Mix</div></div></div>
+  </div>
+</section>
+
+<section id="other" class="gallery">
+  <div class="wrap">
+    <div class="sec-head other-head">
+      <div>
+        <div class="eyebrow" data-en="Other Work" data-es="Otros Trabajos">Other Work</div>
+        <h2 data-en="Sound design for albums, live shows, brands & film" data-es="Diseño de sonido para álbumes, shows en vivo, marcas y cine">Sound design for albums, live shows, brands &amp; film</h2>
+        <p class="sec-note" data-en="Shown as stills — hover for detail." data-es="En imágenes — pasá el cursor para el detalle.">Shown as stills — hover for detail.</p>
+      </div>
+      <div class="scroll-nav">
+        <button id="oPrev" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button id="oNext" aria-label="Next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+    </div>
+    <div class="other-scroll" id="otherScroll">
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/eladio.jpg"></div><div class="ocard-ov"><h3>Eladio Carrión — Corsa</h3><div class="role" data-en="Teaser · Sound Design · 2026" data-es="Teaser · Diseño de Sonido · 2026">Teaser · Sound Design · 2026</div><div class="desc-txt" data-en="Sound design for the promo teaser of his new album CORSA and upcoming dates (2026)." data-es="Diseño de sonido para el teaser promocional de su nuevo disco CORSA y próximas fechas (2026).">Sound design for the promo teaser of his new album CORSA and upcoming dates (2026).</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/ea-fc.jpg"></div><div class="ocard-ov"><h3>EA Sports FC</h3><div class="role" data-en="Advertising · Sound Design · 2026" data-es="Publicidad · Diseño de Sonido · 2026">Advertising · Sound Design · 2026</div><div class="desc-txt" data-en="Advertising spot for Mexico — EA Sports FC campaign for the new 'The World's Game' mode (2026)." data-es="Spot publicitario para México de la campaña EA Sports FC, promocionando su modo 'The World's Game' (2026).">Advertising spot for Mexico — EA Sports FC campaign for the new 'The World's Game' mode (2026).</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/soui-uno.jpg"></div><div class="ocard-ov"><h3>Soui Uno — Punto de Quiebre</h3><div class="role" data-en="Album · Sound Design · 2026" data-es="Álbum · Diseño de Sonido · 2026">Album · Sound Design · 2026</div><div class="desc-txt" data-en="Sound design for the breakout Argentine rapper's intro to her album 'Punto de Quiebre' (2026)." data-es="Diseño de sonido para la introducción del álbum 'Punto de Quiebre' de la rapera argentina revelación (2026).">Sound design for the breakout Argentine rapper's intro to her album 'Punto de Quiebre' (2026).</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/milo-j.jpg"></div><div class="ocard-ov"><h3>Milo J — 166</h3><div class="role" data-en="Album · Sound Design · 2025" data-es="Álbum · Diseño de Sonido · 2025">Album · Sound Design · 2025</div><div class="desc-txt" data-en="Sound design for '3 Pecados Después', 'La Tola y el Velero', 'Paraíso' and pieces from the album '166' (2025)." data-es="Diseño de sonido para '3 Pecados Después', 'La Tola y el Velero', 'Paraíso' y piezas del álbum '166' (2025).">Sound design for '3 Pecados Después', 'La Tola y el Velero', 'Paraíso' and pieces from the album '166' (2025).</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/la-joaqui.jpg"></div><div class="ocard-ov"><h3>La Joaqui</h3><div class="role" data-en="Show · Sound Design · 2025" data-es="Show · Diseño de Sonido · 2025">Show · Sound Design · 2025</div><div class="desc-txt" data-en="Sound design for the show intro of the Argentine artist's 2025 presentation." data-es="Diseño de sonido para la intro del show de la artista argentina, presentación 2025.">Sound design for the show intro of the Argentine artist's 2025 presentation.</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/cerounno.jpg"></div><div class="ocard-ov"><h3>Cerounno — TUVEM</h3><div class="role" data-en="Show · Sound Design · 2025" data-es="Show · Diseño de Sonido · 2025">Show · Sound Design · 2025</div><div class="desc-txt" data-en="Sound design for the show intro of the breakout Argentine rapper, presenting his album TUVEM (2025)." data-es="Diseño de sonido para la intro del show del rapero argentino revelación, presentación del álbum TUVEM (2025).">Sound design for the show intro of the breakout Argentine rapper, presenting his album TUVEM (2025).</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/emilia.jpg"></div><div class="ocard-ov"><h3>Emilia — .mp3 Tour</h3><div class="role" data-en="Show · Sound Design · 2024" data-es="Show · Diseño de Sonido · 2024">Show · Sound Design · 2024</div><div class="desc-txt" data-en="Promo teasers, intro and show moments — Vélez (AR) and WiZink (ES), 2024." data-es="Teasers promocionales, intro y momentos del show — Vélez (AR) y WiZink (ES), 2024.">Promo teasers, intro and show moments — Vélez (AR) and WiZink (ES), 2024.</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/duki.jpg"></div><div class="ocard-ov"><h3>Duki — Ameri</h3><div class="role" data-en="Teaser · Sound Design · 2024" data-es="Teaser · Diseño de Sonido · 2024">Teaser · Sound Design · 2024</div><div class="desc-txt" data-en="Sound design for the promo teaser of his album Ameri (2024)." data-es="Diseño de sonido para el teaser promocional de su disco Ameri (2024).">Sound design for the promo teaser of his album Ameri (2024).</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/nicki.jpg"></div><div class="ocard-ov"><h3>Nicki Nicole — Naiki</h3><div class="role" data-en="Teaser · Sound Design · 2024" data-es="Teaser · Diseño de Sonido · 2024">Teaser · Sound Design · 2024</div><div class="desc-txt" data-en="Sound design for the promo teaser of her album NAIKI (2024)." data-es="Diseño de sonido para el teaser promocional de su disco NAIKI (2024).">Sound design for the promo teaser of her album NAIKI (2024).</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/ysy-a.jpg"></div><div class="ocard-ov"><h3>Ysy A — Radio Club Hits</h3><div class="role" data-en="Album / Film · Sound Design · 2024" data-es="Álbum / Film · Diseño de Sonido · 2024">Album / Film · Sound Design · 2024</div><div class="desc-txt" data-en="Sound design for his album/film 'Radio Club Hits', screened in Argentine cinemas (2024)." data-es="Diseño de sonido para su álbum/film 'Radio Club Hits', exhibido en cines de Argentina (2024).">Sound design for his album/film 'Radio Club Hits', screened in Argentine cinemas (2024).</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/khea.jpg"></div><div class="ocard-ov"><h3>Khea — Navi</h3><div class="role" data-en="Music Video · Sound Design · 2024" data-es="Video Clip · Diseño de Sonido · 2024">Music Video · Sound Design · 2024</div><div class="desc-txt" data-en="Sound design for the 'NAVI' music video and Martín Seipel's director's cut, in collaboration with Honda." data-es="Diseño de sonido para el video clip de 'NAVI' y el director's cut de Martín Seipel, en colaboración con Honda.">Sound design for the 'NAVI' music video and Martín Seipel's director's cut, in collaboration with Honda.</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/bzrp-show.jpg"></div><div class="ocard-ov"><h3>Bizarrap — Show Buenos Aires</h3><div class="role" data-en="Show Teaser · Sound Design · 2023" data-es="Teaser de Show · Diseño de Sonido · 2023">Show Teaser · Sound Design · 2023</div><div class="desc-txt" data-en="Sound design for the teaser of Bizarrap's Buenos Aires show (2023)." data-es="Diseño de sonido para el teaser del show de Bizarrap, Buenos Aires (2023).">Sound design for the teaser of Bizarrap's Buenos Aires show (2023).</div></div></div>
+      <div class="ocard img-only"><div class="tile-art" data-img="assets/work/radio-disney.jpg"></div><div class="ocard-ov"><h3>Radio Disney</h3><div class="role" data-en="Show · Sound Design · 2023" data-es="Show · Diseño de Sonido · 2023">Show · Sound Design · 2023</div><div class="desc-txt" data-en="Sound design for the intro of the Radio Disney Argentina show (2023)." data-es="Diseño de sonido para la introducción del show de Radio Disney Argentina (2023).">Sound design for the intro of the Radio Disney Argentina show (2023).</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="eyebrow" data-en="About" data-es="El Estudio">About</div>
+      <h2 data-en="We are a studio dedicated to <em>sound, music and brand</em>." data-es="Somos un estudio dedicado al <em>sonido, la música y la marca</em>.">We are a studio dedicated to <em>sound, music and brand</em>.</h2>
+    </div>
+    <div>
+      <p data-en="Tundra builds sound and music for advertising, brands, film and live shows — from audio branding and brand identity to foley, sound design for shows, original score and audio post." data-es="Tundra construye sonido y música para publicidad, marcas, cine y shows en vivo — desde el branding de audio y la identidad de marca hasta el foley, el diseño de sonido para shows, la música original y la post de audio.">Tundra builds sound and music for advertising, brands, film and live shows — from audio branding and brand identity to foley, sound design for shows, original score and audio post.</p>
+      <div class="svc-line" data-en="Audio Branding <span>·</span> Sound Design <span>·</span> Foley <span>·</span> Sound for Shows <span>·</span> Original Score <span>·</span> Audio Post" data-es="Branding de Audio <span>·</span> Diseño de Sonido <span>·</span> Foley <span>·</span> Sonido para Shows <span>·</span> Música Original <span>·</span> Post de Audio">Audio Branding <span>·</span> Sound Design <span>·</span> Foley <span>·</span> Sound for Shows <span>·</span> Original Score <span>·</span> Audio Post</div>
+      <div class="credit-list">
+        <span>Bizarrap</span><span>Emilia</span><span>Duki</span><span>Nicki Nicole</span><span>María Becerra</span><span>Milo J</span><span>Eladio Carrión</span><span>Rauw Alejandro</span><span>Ysy A</span><span>Khea</span><span>EA Sports FC</span><span>Adidas</span><span>Kinderland</span><span>Radio Disney</span><span>AYNOTDEAD</span><span>Branca</span><span>Eiras</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="eyebrow" data-en="Let's work" data-es="Trabajemos">Let's work</div>
+    <h2 data-en="A project that <em>needs sound</em>?" data-es="¿Un proyecto que <em>necesita sonido</em>?">A project that <em>needs sound</em>?</h2>
+    <a class="mail" href="mailto:tundrastudio.sfx@gmail.com?subject=Proyecto%20—%20Tundra%20Studio">tundrastudio.sfx@gmail.com</a>
+    <div class="links">
+      <a href="https://taplink.cc/tundrastudio.sfx" target="_blank" rel="noopener">Taplink</a>
+      <a href="https://www.linkedin.com/company/tundrastudio-sfx" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://vimeo.com/tundrastudio" target="_blank" rel="noopener">Vimeo</a>
+      <a href="https://www.instagram.com/tundrastudio.sfx/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://gamma.app/docs/Tundra-Studio-p683287wyrasepy?mode=doc" target="_blank" rel="noopener">Gamma</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <img class="mark logo" src="assets/tundra-logo.png" alt="Tundra Studio" onerror="this.classList.add('broken')" /><svg class="mark fallback"><use href="#tundra-mark"/></svg>
+    <div class="name">Tundra Studio</div>
+    <div>© <span id="year"></span> · Buenos Aires, Argentina</div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="close" id="lb-close" aria-label="Close">&times;</button>
+  <div class="frame" id="lb-frame"></div>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* Intro animation */
+  (function(){
+    const intro = document.getElementById('intro');
+    if(!document.documentElement.classList.contains('js-intro') || !intro){
+      document.body.classList.add('revealed'); return;
+    }
+    window.addEventListener('load', () => {
+      setTimeout(() => { intro.classList.add('done'); document.body.classList.add('revealed'); tryAudio(); }, 2100);
+      setTimeout(() => { intro.remove(); }, 3050);
+    });
+  })();
+
+  /* Sound loop toggle — drop assets/intro-loop.mp3 to enable */
+  const audio = document.getElementById('introAudio'), soundBtn = document.getElementById('soundBtn');
+  const spkOff = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>';
+  const spkOn = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.8 6a9 9 0 0 1 0 12"/></svg>';
+  let soundOn = false;
+  const paint = () => { soundBtn.innerHTML = soundOn ? spkOn : spkOff; };
+  paint();
+  const tryAudio = () => { audio.play().then(() => { soundOn = true; paint(); }).catch(() => {}); };
+  soundBtn.addEventListener('click', () => {
+    soundOn = !soundOn;
+    if(soundOn){ audio.muted = false; audio.play().catch(() => { soundOn = false; paint(); }); }
+    else audio.pause();
+    paint();
+  });
+
+  const setLang = (lang) => {
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-en]').forEach(el => { el.innerHTML = el.getAttribute('data-' + lang); });
+    document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('tundra-lang', lang); } catch(e){}
+  };
+  document.querySelectorAll('.lang-toggle button').forEach(btn => btn.addEventListener('click', () => setLang(btn.dataset.lang)));
+  let saved = 'en'; try { saved = localStorage.getItem('tundra-lang') || 'en'; } catch(e){}
+  setLang(saved);
+
+  /* Key-art: set data-img on any .tile-art. Example: data-img="assets/work/bizapop.jpg" */
+  document.querySelectorAll('.tile-art[data-img]').forEach(a => {
+    const img = a.getAttribute('data-img').trim();
+    if(img) a.style.backgroundImage = "url('" + img + "')";
+  });
+
+  const lb = document.getElementById('lightbox'), lbFrame = document.getElementById('lb-frame');
+  const soonTxt = () => document.documentElement.lang === 'es' ? 'Video próximamente' : 'Video coming soon';
+  /* Featured tiles: set data-video="vimeo:ID" or data-video="yt:ID" to play. */
+  const openVideo = (video) => {
+    lb.classList.remove('img');
+    if(video){
+      const i = video.indexOf(':'), type = video.slice(0, i), id = video.slice(i + 1);
+      const src = type === 'yt'
+        ? 'https://www.youtube-nocookie.com/embed/' + id + '?rel=0&modestbranding=1&autoplay=1'
+        : 'https://player.vimeo.com/video/' + id + '?title=0&byline=0&portrait=0&autoplay=1';
+      lbFrame.innerHTML = '<iframe src="' + src + '" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
+    } else { lbFrame.innerHTML = '<div class="soon">' + soonTxt() + '</div>'; }
+    lb.classList.add('open');
+  };
+  const openImage = (src) => {
+    lb.classList.add('img');
+    lbFrame.innerHTML = src ? '<img class="lb-img" src="' + src + '" alt="" />' : '<div class="soon">' + (document.documentElement.lang === 'es' ? 'Imagen próximamente' : 'Image coming soon') + '</div>';
+    lb.classList.add('open');
+  };
+  const closeLight = () => { lb.classList.remove('open'); lbFrame.innerHTML = ''; };
+  document.querySelectorAll('.tile, .ocard').forEach(t => t.addEventListener('click', () => {
+    if(t.classList.contains('img-only')) openImage((t.querySelector('.tile-art').getAttribute('data-img') || '').trim());
+    else openVideo((t.getAttribute('data-video') || '').trim());
+  }));
+  /* Other Work — horizontal slider arrows */
+  const oScroll = document.getElementById('otherScroll');
+  if(oScroll){
+    const step = () => Math.min(oScroll.clientWidth * 0.85, 340);
+    const p = document.getElementById('oPrev'), n = document.getElementById('oNext');
+    if(p) p.addEventListener('click', () => oScroll.scrollBy({ left: -step(), behavior: 'smooth' }));
+    if(n) n.addEventListener('click', () => oScroll.scrollBy({ left: step(), behavior: 'smooth' }));
+  }
+
+  document.getElementById('lb-close').addEventListener('click', closeLight);
+  lb.addEventListener('click', e => { if(e.target === lb) closeLight(); });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape') closeLight(); });
+</script>
+</body>
+</html>
