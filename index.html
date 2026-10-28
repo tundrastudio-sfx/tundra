@@ -28,7 +28,7 @@
   <meta name="twitter:image" content="https://tundrastudio-sfx.github.io/tundra/assets/og.jpg" />
   <meta name="twitter:image:alt" content="Tundra Studio — Sound Design, Score and Audio Post" />
 
-  <link rel="icon" href="../assets/tundra-logo.png" type="image/png" />
+  <link rel="icon" href="assets/tundra-logo.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&family=Cinzel:wght@400;500&display=swap" rel="stylesheet" />
@@ -225,6 +225,11 @@
 
     /* Other work: full grid, with details available without hover on touch devices. */
     .other-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .mail-menu { position: absolute; z-index: 150; display: flex; flex-direction: column; min-width: 232px; padding: 6px; background: var(--charcoal-deep); border: 1px solid var(--line-strong); border-radius: 3px; box-shadow: 0 18px 44px rgba(0,0,0,0.5); }
+    .mail-menu[hidden] { display: none; }
+    .mm-item { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 12px; border: 0; border-radius: 2px; background: none; color: var(--fog); font-family: var(--font-technical, monospace); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; cursor: pointer; }
+    .mm-item:hover, .mm-item:focus-visible { background: rgba(176,196,212,0.1); color: var(--ice); }
+    .s-wide { display: inline-block; transform: scaleX(1.2); margin-inline: 0.045em; }
     .other-card { aspect-ratio: 4 / 5; }
     .other-grid:not(.expanded) .is-extra { display: none; }
     .other-grid.expanded .is-extra { animation: rise 600ms ease both; }
@@ -577,14 +582,13 @@
   </svg>
 
   <div id="intro" aria-hidden="true">
-    <img class="intro-logo" src="../assets/tundra-logo.png" alt="" onerror="this.classList.add('broken')" />
-    <svg class="intro-logo" viewBox="0 0 140 94" width="240" height="160" aria-hidden="true"><use href="#tundra-mark"></use></svg>
+    <img class="intro-logo" src="assets/tundra-logo.png" alt="" onerror="this.classList.add('broken')" />
   </div>
 
   <!-- The intro loop is never started without an explicit user action. -->
   <audio id="introAudio" loop preload="none">
-    <source src="../assets/intro-loop.mp3" type="audio/mpeg" />
-    <source src="../assets/intro-loop.ogg" type="audio/ogg" />
+    <source src="assets/intro-loop.mp3" type="audio/mpeg" />
+    <source src="assets/intro-loop.ogg" type="audio/ogg" />
   </audio>
   <button class="sound-btn" id="soundBtn" type="button" aria-label="Activate intro sound" aria-pressed="false">
     <svg class="sound-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"></path><path d="M16 9 22 15M22 9l-6 6"></path></svg>
@@ -594,8 +598,7 @@
   <nav class="site-nav" aria-label="Main navigation">
     <div class="wrap nav-inner">
       <a class="brand" href="#top" aria-label="Tundra Studio — home">
-        <img class="mark logo" src="../assets/tundra-logo.png" alt="" onerror="this.classList.add('broken')" />
-        <svg class="mark fallback" viewBox="0 0 140 94" aria-hidden="true"><use href="#tundra-mark"></use></svg>
+        <img class="mark logo" src="assets/tundra-logo.png" alt="" onerror="this.classList.add('broken')" />
         <span class="wordmark">Tundra</span>
       </a>
       <div class="navlinks">
@@ -615,9 +618,8 @@
     <!-- Hero copy intentionally keeps the current wording pending headline approval. -->
     <header class="masthead" id="top">
       <div class="hero-inner">
-        <img class="mark logo" src="../assets/tundra-logo.png" alt="Tundra Studio" fetchpriority="high" onerror="this.classList.add('broken')" />
-        <svg class="mark fallback" viewBox="0 0 140 94" aria-hidden="true"><use href="#tundra-mark"></use></svg>
-        <h1>Tundra Studio</h1>
+        <img class="mark logo" src="assets/tundra-logo.png" alt="Tundra Studio" fetchpriority="high" onerror="this.classList.add('broken')" />
+        <h1 aria-label="Tundra Studio">Tundra <span class="s-wide" aria-hidden="true">S</span><span aria-hidden="true">tudio</span></h1>
         <p class="desc" data-en="Sound Design · Score · Audio Post" data-es="Diseño de Sonido · Música Original · Postproducción de Audio">Sound Design · Score · Audio Post</p>
         <p class="loc" data-en="Buenos Aires, Argentina" data-es="Buenos Aires, Argentina">Buenos Aires, Argentina</p>
         <div class="hero-actions">
@@ -635,8 +637,8 @@
         <h2 id="work-title" data-en="Selected pieces" data-es="Piezas seleccionadas">Selected pieces</h2>
       </div>
       <div class="wrap featured-grid">
-        <button class="project-card feature-lead" type="button" data-video="yt:gZhAuUTndEQ" data-title="Bizarrap — Bizapop" data-image="../assets/work/bizapop.jpg">
-          <span class="card-media"><img src="../assets/work/bizapop.jpg" alt="" loading="eager" decoding="async" fetchpriority="high" /></span>
+        <button class="project-card feature-lead" type="button" data-video="yt:gZhAuUTndEQ" data-title="Bizarrap — Bizapop" data-image="assets/work/bizapop.jpg">
+          <span class="card-media"><img src="assets/work/bizapop.jpg" alt="" loading="eager" decoding="async" fetchpriority="high" /></span>
           <span class="card-topline"><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Bizarrap — Bizapop</span><span class="card-services" data-credit-field="services" data-en="Short Film · Sound Design · Foley · Mix · Score" data-es="Cortometraje · Diseño de Sonido · Foley · Mezcla · Banda Sonora">Short Film · Sound Design · Foley · Mix · Score</span>
             <span class="card-credits">
@@ -648,8 +650,8 @@
           </span>
         </button>
 
-        <button class="project-card feature-side" type="button" data-video="yt:6D10_CDFwJ0" data-title="Rauw Alejandro — Cosa Nuestra" data-image="../assets/work/rauw.jpg">
-          <span class="card-media"><img src="../assets/work/rauw.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card feature-side" type="button" data-video="yt:6D10_CDFwJ0" data-title="Rauw Alejandro — Cosa Nuestra" data-image="assets/work/rauw.jpg">
+          <span class="card-media"><img src="assets/work/rauw.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Rauw Alejandro — Cosa Nuestra</span><span class="card-services" data-credit-field="services" data-en="Sound Design · Dialogue Edit · Foley · Mix" data-es="Diseño de Sonido · Edición de Diálogos · Foley · Mezcla">Sound Design · Dialogue Edit · Foley · Mix</span>
             <span class="card-credits">
@@ -661,8 +663,8 @@
           </span>
         </button>
 
-        <button class="project-card feature-side" type="button" data-video="yt:QCZB48D77n8" data-title="Adidas — Forum 2000 x BZRP" data-image="../assets/work/adidas-bzrp.jpg">
-          <span class="card-media"><img src="../assets/work/adidas-bzrp.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card feature-side" type="button" data-video="yt:QCZB48D77n8" data-title="Adidas — Forum 2000 x BZRP" data-image="assets/work/adidas-bzrp.jpg">
+          <span class="card-media"><img src="assets/work/adidas-bzrp.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Adidas — Forum 2000 x BZRP</span><span class="card-services" data-credit-field="services" data-en="Advertising · Sound Design · Foley · Mix" data-es="Publicidad · Diseño de Sonido · Foley · Mezcla">Advertising · Sound Design · Foley · Mix</span>
             <span class="card-credits">
@@ -674,8 +676,8 @@
           </span>
         </button>
 
-        <button class="project-card feature-small" type="button" data-video="yt:jbP2dRA9Gbs" data-title="Kinderland" data-image="../assets/work/kinderland.jpg">
-          <span class="card-media"><img src="../assets/work/kinderland.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card feature-small" type="button" data-video="yt:jbP2dRA9Gbs" data-title="Kinderland" data-image="assets/work/kinderland.jpg">
+          <span class="card-media"><img src="assets/work/kinderland.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Kinderland</span><span class="card-services" data-credit-field="services" data-en="Advertising · Sound Design · Foley · Mix" data-es="Publicidad · Diseño de Sonido · Foley · Mezcla">Advertising · Sound Design · Foley · Mix</span>
             <span class="card-credits">
@@ -687,8 +689,8 @@
           </span>
         </button>
 
-        <button class="project-card feature-small" type="button" data-video="yt:GHnkC5XJaTk" data-title="Bizarrap — Music Session #55 · Teaser" data-image="../assets/work/bzrat.jpg">
-          <span class="card-media"><img src="../assets/work/bzrat.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card feature-small" type="button" data-video="yt:GHnkC5XJaTk" data-title="Bizarrap — Music Session #55 · Teaser" data-image="assets/work/bzrat.jpg">
+          <span class="card-media"><img src="assets/work/bzrat.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Bizarrap — Music Session #55 · Teaser</span><span class="card-services" data-credit-field="services" data-en="Sound Design · Original Music · Foley · Mix" data-es="Diseño de Sonido · Música Original · Foley · Mezcla">Sound Design · Original Music · Foley · Mix</span>
             <span class="card-credits">
@@ -700,8 +702,8 @@
           </span>
         </button>
 
-        <button class="project-card feature-small" type="button" data-video="yt:J3qDc6aR9T4" data-title="LIT Killah — SnipeZ" data-image="../assets/work/snipez.jpg">
-          <span class="card-media"><img src="../assets/work/snipez.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card feature-small" type="button" data-video="yt:J3qDc6aR9T4" data-title="LIT Killah — SnipeZ" data-image="assets/work/snipez.jpg">
+          <span class="card-media"><img src="assets/work/snipez.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">LIT Killah — SnipeZ</span><span class="card-services" data-credit-field="services" data-en="Album Teaser · Sound Design · Foley · Mix" data-es="Teaser de Álbum · Diseño de Sonido · Foley · Mezcla">Album Teaser · Sound Design · Foley · Mix</span>
             <span class="card-credits">
@@ -741,68 +743,68 @@
         <p data-en="Albums, live shows, brands and film." data-es="Álbumes, shows en vivo, marcas y cine.">Albums, live shows, brands and film.</p>
       </div>
       <div class="wrap other-grid" id="otherGrid">
-        <button class="project-card other-card" type="button" data-link="https://www.instagram.com/p/DXrYSyntVqV/" data-title="Eladio Carrión — Corsa" data-image="../assets/work/eladio.jpg">
-          <span class="card-media"><img src="../assets/work/eladio.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card" type="button" data-link="https://www.instagram.com/p/DXrYSyntVqV/" data-title="Eladio Carrión — Corsa" data-image="assets/work/eladio.jpg">
+          <span class="card-media"><img src="assets/work/eladio.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">01</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Eladio Carrión — Corsa</span><span class="card-services" data-credit-field="services" data-en="Teaser · Sound Design · 2026" data-es="Teaser · Diseño de Sonido · 2026">Teaser · Sound Design · 2026</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Anestesia AV</span></span></span><span class="card-description" data-en="Sound design for the promo teaser of his new album CORSA and upcoming dates (2026)." data-es="Diseño de sonido para el teaser promocional de su nuevo disco CORSA y próximas fechas (2026).">Sound design for the promo teaser of his new album CORSA and upcoming dates (2026).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-title="EA Sports FC" data-image="../assets/work/ea-fc.jpg">
-          <span class="card-media"><img src="../assets/work/ea-fc.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card" type="button" data-title="EA Sports FC" data-image="assets/work/ea-fc.jpg">
+          <span class="card-media"><img src="assets/work/ea-fc.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">02</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">EA Sports FC</span><span class="card-services" data-credit-field="services" data-en="Advertising · Sound Design · 2026" data-es="Publicidad · Diseño de Sonido · 2026">Advertising · Sound Design · 2026</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Arena Collective</span></span></span><span class="card-description" data-en="Advertising spot for Mexico — EA Sports FC campaign for the new 'The World's Game' mode (2026)." data-es="Spot publicitario para México de la campaña EA Sports FC, promocionando su modo 'The World's Game' (2026).">Advertising spot for Mexico — EA Sports FC campaign for the new 'The World's Game' mode (2026).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-video="yt:ixwEWmGtt5I" data-title="Soui Uno — Punto de Quiebre" data-image="../assets/work/soui-uno.jpg">
-          <span class="card-media"><img src="../assets/work/soui-uno.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card" type="button" data-video="yt:ixwEWmGtt5I" data-title="Soui Uno — Punto de Quiebre" data-image="assets/work/soui-uno.jpg">
+          <span class="card-media"><img src="assets/work/soui-uno.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">03</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Soui Uno — Punto de Quiebre</span><span class="card-services" data-credit-field="services" data-en="Album · Sound Design · 2026" data-es="Álbum · Diseño de Sonido · 2026">Album · Sound Design · 2026</span><span class="card-description" data-en="Sound design for the breakout Argentine rapper's intro to her album 'Punto de Quiebre' (2026)." data-es="Diseño de sonido para la introducción del álbum 'Punto de Quiebre' de la rapera argentina revelación (2026).">Sound design for the breakout Argentine rapper's intro to her album 'Punto de Quiebre' (2026).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-title="Milo J — 166" data-image="../assets/work/milo-j.jpg">
-          <span class="card-media"><img src="../assets/work/milo-j.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card" type="button" data-title="Milo J — 166" data-image="assets/work/milo-j.jpg">
+          <span class="card-media"><img src="assets/work/milo-j.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">04</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Milo J — 166</span><span class="card-services" data-credit-field="services" data-en="Album · Sound Design · 2025" data-es="Álbum · Diseño de Sonido · 2025">Album · Sound Design · 2025</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Arena Collective</span></span></span><span class="card-description" data-en="Sound design for '3 Pecados Después', 'La Tola y el Velero', 'Paraíso' and pieces from the album '166' (2025)." data-es="Diseño de sonido para '3 Pecados Después', 'La Tola y el Velero', 'Paraíso' y piezas del álbum '166' (2025).">Sound design for '3 Pecados Después', 'La Tola y el Velero', 'Paraíso' and pieces from the album '166' (2025).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-video="yt:9M3wKdJyWGw" data-title="Cerounno — TUVEM" data-image="../assets/work/cerounno.jpg">
-          <span class="card-media"><img src="../assets/work/cerounno.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card" type="button" data-video="yt:9M3wKdJyWGw" data-title="Cerounno — TUVEM" data-image="assets/work/cerounno.jpg">
+          <span class="card-media"><img src="assets/work/cerounno.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">05</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Cerounno — TUVEM</span><span class="card-services" data-credit-field="services" data-en="Show · Sound Design · 2025" data-es="Show · Diseño de Sonido · 2025">Show · Sound Design · 2025</span><span class="card-description" data-en="Sound design for the show intro of the breakout Argentine rapper, presenting his album TUVEM (2025)." data-es="Diseño de sonido para la intro del show del rapero argentino revelación, presentación del álbum TUVEM (2025).">Sound design for the show intro of the breakout Argentine rapper, presenting his album TUVEM (2025).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-title="Emilia — .mp3 Tour" data-image="../assets/work/emilia.jpg">
-          <span class="card-media"><img src="../assets/work/emilia.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card" type="button" data-title="Emilia — .mp3 Tour" data-image="assets/work/emilia.jpg">
+          <span class="card-media"><img src="assets/work/emilia.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">06</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Emilia — .mp3 Tour</span><span class="card-services" data-credit-field="services" data-en="Show · Sound Design · 2024" data-es="Show · Diseño de Sonido · 2024">Show · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Creative Direction" data-es="Dirección creativa">Creative Direction</span><span class="credit-value">Julita Conde</span></span></span><span class="card-description" data-en="Promo teasers, intro and show moments — Vélez (AR) and WiZink (ES), 2024." data-es="Teasers promocionales, intro y momentos del show — Vélez (AR) y WiZink (ES), 2024.">Promo teasers, intro and show moments — Vélez (AR) and WiZink (ES), 2024.</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-title="Duki — Ameri" data-image="../assets/work/duki.jpg">
-          <span class="card-media"><img src="../assets/work/duki.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card" type="button" data-title="Duki — Ameri" data-image="assets/work/duki.jpg">
+          <span class="card-media"><img src="assets/work/duki.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">07</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Duki — Ameri</span><span class="card-services" data-credit-field="services" data-en="Teaser · Sound Design · 2024" data-es="Teaser · Diseño de Sonido · 2024">Teaser · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Anestesia AV</span></span></span><span class="card-description" data-en="Sound design for the promo teaser of his album Ameri (2024)." data-es="Diseño de sonido para el teaser promocional de su disco Ameri (2024).">Sound design for the promo teaser of his album Ameri (2024).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-video="yt:inS2lWLeLIg" data-title="Ysy A — Radio Club Hits" data-image="../assets/work/ysy-a.jpg">
-          <span class="card-media"><img src="../assets/work/ysy-a.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card" type="button" data-video="yt:inS2lWLeLIg" data-title="Ysy A — Radio Club Hits" data-image="assets/work/ysy-a.jpg">
+          <span class="card-media"><img src="assets/work/ysy-a.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">08</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Ysy A — Radio Club Hits</span><span class="card-services" data-credit-field="services" data-en="Album / Film · Sound Design · 2024" data-es="Álbum / Film · Diseño de Sonido · 2024">Album / Film · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Arena Collective</span></span></span><span class="card-description" data-en="Sound design for his album/film 'Radio Club Hits', screened in Argentine cinemas (2024)." data-es="Diseño de sonido para su álbum/film 'Radio Club Hits', exhibido en cines de Argentina (2024).">Sound design for his album/film 'Radio Club Hits', screened in Argentine cinemas (2024).</span></span>
         </button>
-        <button class="project-card other-card is-extra" type="button" data-title="La Joaqui" data-image="../assets/work/la-joaqui.jpg">
-          <span class="card-media"><img src="../assets/work/la-joaqui.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card is-extra" type="button" data-title="La Joaqui" data-image="assets/work/la-joaqui.jpg">
+          <span class="card-media"><img src="assets/work/la-joaqui.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">09</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">La Joaqui</span><span class="card-services" data-credit-field="services" data-en="Show · Sound Design · 2025" data-es="Show · Diseño de Sonido · 2025">Show · Sound Design · 2025</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Creative Direction" data-es="Dirección creativa">Creative Direction</span><span class="credit-value">Julita Conde</span></span></span><span class="card-description" data-en="Sound design for the show intro of the Argentine artist's 2025 presentation." data-es="Diseño de sonido para la intro del show de la artista argentina, presentación 2025.">Sound design for the show intro of the Argentine artist's 2025 presentation.</span></span>
         </button>
-        <button class="project-card other-card is-extra" type="button" data-title="Nicki Nicole — Naiki" data-image="../assets/work/nicki.jpg">
-          <span class="card-media"><img src="../assets/work/nicki.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card is-extra" type="button" data-title="Nicki Nicole — Naiki" data-image="assets/work/nicki.jpg">
+          <span class="card-media"><img src="assets/work/nicki.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">10</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Nicki Nicole — Naiki</span><span class="card-services" data-credit-field="services" data-en="Teaser · Sound Design · 2024" data-es="Teaser · Diseño de Sonido · 2024">Teaser · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Anestesia AV</span></span></span><span class="card-description" data-en="Sound design for the promo teaser of her album NAIKI (2024)." data-es="Diseño de sonido para el teaser promocional de su disco NAIKI (2024).">Sound design for the promo teaser of her album NAIKI (2024).</span></span>
         </button>
-        <button class="project-card other-card is-extra" type="button" data-title="Khea — Navi" data-image="../assets/work/khea.jpg">
-          <span class="card-media"><img src="../assets/work/khea.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card is-extra" type="button" data-title="Khea — Navi" data-image="assets/work/khea.jpg">
+          <span class="card-media"><img src="assets/work/khea.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">11</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Khea — Navi</span><span class="card-services" data-credit-field="services" data-en="Music Video · Sound Design · 2024" data-es="Video Clip · Diseño de Sonido · 2024">Music Video · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Direction" data-es="Dirección">Direction</span><span class="credit-value">Martín Seipel</span></span></span><span class="card-description" data-en="Sound design for the 'NAVI' music video and Martín Seipel's director's cut, in collaboration with Honda." data-es="Diseño de sonido para el video clip de 'NAVI' y el director's cut de Martín Seipel, en colaboración con Honda.">Sound design for the 'NAVI' music video and Martín Seipel's director's cut, in collaboration with Honda.</span></span>
         </button>
-        <button class="project-card other-card is-extra" type="button" data-title="Bizarrap — Show Buenos Aires" data-image="../assets/work/bzrp-show.jpg">
-          <span class="card-media"><img src="../assets/work/bzrp-show.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card is-extra" type="button" data-title="Bizarrap — Show Buenos Aires" data-image="assets/work/bzrp-show.jpg">
+          <span class="card-media"><img src="assets/work/bzrp-show.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">12</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Bizarrap — Show Buenos Aires</span><span class="card-services" data-credit-field="services" data-en="Show Teaser · Sound Design · 2023" data-es="Teaser de Show · Diseño de Sonido · 2023">Show Teaser · Sound Design · 2023</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Creative Direction" data-es="Dirección creativa">Creative Direction</span><span class="credit-value">Julita Conde</span></span></span><span class="card-description" data-en="Sound design for the teaser of Bizarrap's Buenos Aires show (2023)." data-es="Diseño de sonido para el teaser del show de Bizarrap, Buenos Aires (2023).">Sound design for the teaser of Bizarrap's Buenos Aires show (2023).</span></span>
         </button>
-        <button class="project-card other-card is-extra" type="button" data-title="Radio Disney" data-image="../assets/work/radio-disney.jpg">
-          <span class="card-media"><img src="../assets/work/radio-disney.jpg" alt="" loading="lazy" decoding="async" /></span>
+        <button class="project-card other-card is-extra" type="button" data-title="Radio Disney" data-image="assets/work/radio-disney.jpg">
+          <span class="card-media"><img src="assets/work/radio-disney.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">13</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Radio Disney</span><span class="card-services" data-credit-field="services" data-en="Show · Sound Design · 2023" data-es="Show · Diseño de Sonido · 2023">Show · Sound Design · 2023</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Creative Direction" data-es="Dirección creativa">Creative Direction</span><span class="credit-value">Julita Conde</span></span></span><span class="card-description" data-en="Sound design for the intro of the Radio Disney Argentina show (2023)." data-es="Diseño de sonido para la introducción del show de Radio Disney Argentina (2023).">Sound design for the intro of the Radio Disney Argentina show (2023).</span></span>
         </button>
@@ -853,12 +855,17 @@
 
   <footer>
     <div class="wrap">
-      <img class="mark logo" src="../assets/tundra-logo.png" alt="Tundra Studio" loading="lazy" onerror="this.classList.add('broken')" />
-      <svg class="mark fallback" viewBox="0 0 140 94" aria-hidden="true"><use href="#tundra-mark"></use></svg>
-      <div class="name">Tundra Studio</div>
+      <img class="mark logo" src="assets/tundra-logo.png" alt="Tundra Studio" loading="lazy" onerror="this.classList.add('broken')" />
+      <div class="name">Tundra <span class="s-wide">S</span>tudio</div>
       <p class="legal">© <span id="year"></span> · Buenos Aires, Argentina</p>
     </div>
   </footer>
+
+  <div class="mail-menu" id="mailMenu" role="menu" hidden>
+    <a class="mm-item" id="mmApp" role="menuitem" href="mailto:tundrastudio.sfx@gmail.com"><span class="mm-label"></span><span aria-hidden="true">↗</span></a>
+    <a class="mm-item" id="mmGmail" role="menuitem" href="#" target="_blank" rel="noopener noreferrer"><span class="mm-label"></span><span aria-hidden="true">↗</span></a>
+    <button class="mm-item" id="mmCopy" role="menuitem" type="button"><span class="mm-label"></span><span aria-hidden="true">⧉</span></button>
+  </div>
 
   <dialog class="lightbox" id="lightbox" aria-labelledby="lightboxTitle">
     <div class="lightbox-bar">
@@ -958,6 +965,7 @@
       document.querySelectorAll('.mailto-link').forEach((link) => {
         link.href = mailtoFor(safeLang);
       });
+      paintMailMenu();
       updateOptionalCredits();
       paintMore();
       try { localStorage.setItem('tundra-lang', safeLang); } catch (error) { /* Storage may be blocked. */ }
@@ -1086,6 +1094,66 @@
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && lightbox.open) closeLightbox();
     });
+
+    /* Quote / brief buttons: choose email app, Gmail in the browser, or copy the address. */
+    function gmailFor(lang) {
+      const m = mailtoFor(lang);
+      const q = new URLSearchParams(m.split('?')[1]);
+      return 'https://mail.google.com/mail/?view=cm&fs=1&to=' + encodeURIComponent(emailAddress) +
+        '&su=' + encodeURIComponent(q.get('subject') || '') + '&body=' + encodeURIComponent(q.get('body') || '');
+    }
+    function paintMailMenu() {
+      const menu = document.getElementById('mailMenu');
+      if (!menu) return;
+      const es = document.documentElement.lang === 'es';
+      const lang = es ? 'es' : 'en';
+      document.getElementById('mmApp').href = mailtoFor(lang);
+      document.getElementById('mmGmail').href = gmailFor(lang);
+      document.querySelector('#mmApp .mm-label').textContent = es ? 'Abrir app de mail' : 'Open email app';
+      document.querySelector('#mmGmail .mm-label').textContent = es ? 'Abrir en Gmail' : 'Open in Gmail';
+      document.querySelector('#mmCopy .mm-label').textContent = es ? 'Copiar mail' : 'Copy email';
+    }
+    function closeMailMenu() { const m = document.getElementById('mailMenu'); if (m) m.hidden = true; }
+    function openMailMenu(trigger) {
+      const menu = document.getElementById('mailMenu');
+      paintMailMenu();
+      menu.hidden = false;
+      const r = trigger.getBoundingClientRect();
+      const w = menu.offsetWidth;
+      let left = r.left + window.scrollX + (r.width - w) / 2;
+      left = Math.max(window.scrollX + 12, Math.min(left, window.scrollX + document.documentElement.clientWidth - w - 12));
+      menu.style.left = left + 'px';
+      menu.style.top = (r.bottom + window.scrollY + 8) + 'px';
+      document.getElementById('mmApp').focus();
+    }
+    document.querySelectorAll('.mailto-link').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        const menu = document.getElementById('mailMenu');
+        if (!menu.hidden) { closeMailMenu(); return; }
+        openMailMenu(link);
+      });
+    });
+    document.getElementById('mmCopy').addEventListener('click', async () => {
+      const label = document.querySelector('#mmCopy .mm-label');
+      try { await navigator.clipboard.writeText(emailAddress); }
+      catch (error) {
+        const t = document.createElement('textarea'); t.value = emailAddress; document.body.appendChild(t);
+        t.select(); try { document.execCommand('copy'); } catch (e) {} t.remove();
+      }
+      label.textContent = document.documentElement.lang === 'es' ? 'Copiado ✓' : 'Copied ✓';
+      setTimeout(() => { paintMailMenu(); closeMailMenu(); }, 1300);
+    });
+    document.getElementById('mmApp').addEventListener('click', () => setTimeout(closeMailMenu, 50));
+    document.getElementById('mmGmail').addEventListener('click', () => setTimeout(closeMailMenu, 50));
+    document.addEventListener('click', (event) => {
+      const menu = document.getElementById('mailMenu');
+      if (menu && !menu.hidden && !menu.contains(event.target)) closeMailMenu();
+    });
+    document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMailMenu(); });
+    window.addEventListener('resize', closeMailMenu);
+    paintMailMenu();
 
     /* More work: first eight on show, the rest on demand. */
     function paintMore() {
