@@ -229,6 +229,20 @@
     .mail-menu[hidden] { display: none; }
     .mm-item { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 12px 12px; border: 0; border-radius: 2px; background: none; color: var(--fog); font-family: var(--font-technical, monospace); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; cursor: pointer; }
     .mm-item:hover, .mm-item:focus-visible { background: rgba(176,196,212,0.1); color: var(--ice); }
+    html.js-ready { scroll-behavior: auto; }
+    .section-kicker::before { transition: width 700ms var(--ease-out, ease); }
+    .arrived .section-kicker::before { width: 72px; }
+    .arrived h2 { animation: arrive-in 1.1s var(--ease-out, ease); }
+    @keyframes arrive-in { 0% { opacity: 0.3; transform: translateY(12px); } 100% { opacity: 1; transform: none; } }
+    .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: clamp(18px, 2.5vw, 28px); }
+    .chip { min-height: 38px; padding: 8px 14px; border: 1px solid var(--line-strong); border-radius: 2px; background: none; color: var(--ice-dim); font-family: var(--font-technical, monospace); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease; }
+    .chip:hover { border-color: var(--ice); color: var(--fog); }
+    .chip.active { border-color: var(--ice); background: var(--ice); color: var(--charcoal); }
+    .other-grid.filtered .project-card.is-extra { display: block; }
+    .other-grid .project-card[hidden] { display: none !important; }
+    .other-grid.refresh .project-card:not([hidden]) { animation: rise 520ms ease both; }
+    .more-wrap[hidden] { display: none; }
+    .card-badge { margin-left: 8px; padding: 3px 7px; border: 1px solid rgba(232,237,241,0.55); border-radius: 2px; background: rgba(10,11,12,0.4); color: var(--fog); font-family: var(--font-technical, monospace); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; }
     .s-wide { display: inline-block; transform: scaleX(1.2); margin-inline: 0.045em; }
     .other-card { aspect-ratio: 4 / 5; }
     .project-card.is-static { cursor: default; }
@@ -742,6 +756,7 @@
           <span class="service-tag" data-en="Dialogue Edit" data-es="Edición de Diálogos">Dialogue Edit</span>
           <span class="service-tag" data-en="Film Mix — Stereo, 5.1 &amp; Dolby Atmos" data-es="Mezcla para cine — Estéreo, 5.1 y Dolby Atmos">Film Mix — Stereo, 5.1 &amp; Dolby Atmos</span>
           <span class="service-tag" data-en="Sound Design for Live Shows" data-es="Diseño de sonido para shows en vivo">Sound Design for Live Shows</span>
+          <span class="service-tag" data-en="Social &amp; Digital Campaigns" data-es="Campañas para redes y digital">Social &amp; Digital Campaigns</span>
         </div>
       </div>
     </section>
@@ -753,103 +768,109 @@
         <h2 id="other-title" data-en="Sound design across formats." data-es="Diseño de sonido en distintos formatos.">Sound design across formats.</h2>
         <p data-en="Albums, live shows, brands and film." data-es="Álbumes, shows en vivo, marcas y cine.">Albums, live shows, brands and film.</p>
       </div>
+      <div class="wrap filter-bar" role="toolbar" aria-label="Filter work">
+        <button class="chip active" type="button" data-filter="all" aria-pressed="true" data-en="All" data-es="Todo">All</button>
+        <button class="chip" type="button" data-filter="ads" aria-pressed="false" data-en="Advertising &amp; Brands" data-es="Publicidad y marcas">Advertising &amp; Brands</button>
+        <button class="chip" type="button" data-filter="music" aria-pressed="false" data-en="Music" data-es="Música">Music</button>
+        <button class="chip" type="button" data-filter="live" aria-pressed="false" data-en="Live Shows" data-es="Shows en vivo">Live Shows</button>
+      </div>
       <div class="wrap other-grid" id="otherGrid">
-        <button class="project-card other-card" type="button" data-video="ig:DXrYSyntVqV" data-title="Eladio Carrión — Corsa" data-image="assets/work/eladio.jpg">
+        <button class="project-card other-card" type="button" data-video="ig:DXrYSyntVqV" data-cat="music" data-title="Eladio Carrión — Corsa" data-image="assets/work/eladio.jpg">
           <span class="card-media"><img src="assets/work/eladio.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">01</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Eladio Carrión — Corsa</span><span class="card-services" data-credit-field="services" data-en="Teaser · Sound Design · 2026" data-es="Teaser · Diseño de Sonido · 2026">Teaser · Sound Design · 2026</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Anestesia AV</span></span></span><span class="card-description" data-en="Sound design for the promo teaser of his new album CORSA and upcoming dates (2026)." data-es="Diseño de sonido para el teaser promocional de su nuevo disco CORSA y próximas fechas (2026).">Sound design for the promo teaser of his new album CORSA and upcoming dates (2026).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-video="yt:inS2lWLeLIg" data-title="Ysy A — Radio Club Hits" data-image="assets/work/ysy-a.jpg">
+        <button class="project-card other-card" type="button" data-video="yt:inS2lWLeLIg" data-cat="music" data-title="Ysy A — Radio Club Hits" data-image="assets/work/ysy-a.jpg">
           <span class="card-media"><img src="assets/work/ysy-a.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">02</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Ysy A — Radio Club Hits</span><span class="card-services" data-credit-field="services" data-en="Album / Film · Sound Design · 2024" data-es="Álbum / Film · Diseño de Sonido · 2024">Album / Film · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Arena Collective</span></span></span><span class="card-description" data-en="Sound design for his album/film 'Radio Club Hits', screened in Argentine cinemas (2024)." data-es="Diseño de sonido para su álbum/film 'Radio Club Hits', exhibido en cines de Argentina (2024).">Sound design for his album/film 'Radio Club Hits', screened in Argentine cinemas (2024).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-video="yt:MhKD3ERzdlk" data-title="Milo J — Paraíso" data-image="assets/work/milo-j.jpg">
+        <button class="project-card other-card" type="button" data-video="yt:MhKD3ERzdlk" data-cat="music" data-title="Milo J — Paraíso" data-image="assets/work/milo-j.jpg">
           <span class="card-media"><img src="assets/work/milo-j.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">03</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Milo J — Paraíso</span><span class="card-services" data-credit-field="services" data-en="Track · Sound Design · 2025" data-es="Canción · Diseño de Sonido · 2025">Track · Sound Design · 2025</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Arena Collective</span></span></span><span class="card-description" data-en="Sound design for the song 'Paraíso', from the album '166' (2025)." data-es="Diseño de sonido para la canción 'Paraíso', del álbum '166' (2025).">Sound design for the song 'Paraíso', from the album '166' (2025).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-video="ig:C4WofY3sXcT" data-title="Khea — Navi" data-image="assets/work/khea.jpg">
+        <button class="project-card other-card" type="button" data-video="ig:C4WofY3sXcT" data-cat="music" data-title="Khea — Navi" data-image="assets/work/khea.jpg">
           <span class="card-media"><img src="assets/work/khea.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">04</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Khea — Navi</span><span class="card-services" data-credit-field="services" data-en="Music Video · Sound Design · 2024" data-es="Video Clip · Diseño de Sonido · 2024">Music Video · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Direction" data-es="Dirección">Direction</span><span class="credit-value">Martín Seipel</span></span></span><span class="card-description" data-en="Sound design for the 'NAVI' music video and Martín Seipel's director's cut, in collaboration with Honda." data-es="Diseño de sonido para el video clip de 'NAVI' y el director's cut de Martín Seipel, en colaboración con Honda.">Sound design for the 'NAVI' music video and Martín Seipel's director's cut, in collaboration with Honda.</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-video="ig:DIRyEpjvUNY" data-title="Prime Video" data-image="assets/work/prime-video.jpg">
+        <button class="project-card other-card" type="button" data-video="ig:DIRyEpjvUNY" data-cat="ads social" data-title="Prime Video" data-image="assets/work/prime-video.jpg">
           <span class="card-media"><img src="assets/work/prime-video.jpg" alt="" loading="lazy" decoding="async" /></span>
-          <span class="card-topline"><span class="card-index">05</span><span class="card-open" aria-hidden="true">↗</span></span>
+          <span class="card-topline"><span class="card-index">05</span><span class="card-badge" data-en="Social" data-es="Redes">Social</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Prime Video</span><span class="card-services" data-credit-field="services" data-en="Advertising · Sound Design · 2025" data-es="Publicidad · Diseño de Sonido · 2025">Advertising · Sound Design · 2025</span><span class="card-description" data-en="Sound design for an advertising spot (2025)." data-es="Diseño de sonido para un spot publicitario (2025).">Sound design for an advertising spot (2025).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-video="yt:dPjA_lBdoU0" data-title="Emilia &amp; Nicki Nicole — Intoxicao" data-image="assets/work/intoxicao.jpg">
+        <button class="project-card other-card" type="button" data-video="yt:dPjA_lBdoU0" data-cat="music" data-title="Emilia &amp; Nicki Nicole — Intoxicao" data-image="assets/work/intoxicao.jpg">
           <span class="card-media"><img src="assets/work/intoxicao.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">06</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Emilia &amp; Nicki Nicole — Intoxicao</span><span class="card-services" data-credit-field="services" data-en="Music Video · Sound Design · 2022" data-es="Video Clip · Diseño de Sonido · 2022">Music Video · Sound Design · 2022</span><span class="card-description" data-en="Sound design for the intro of the &#x27;Intoxicao&#x27; music video (2022)." data-es="Diseño de sonido para la intro del videoclip de &#x27;Intoxicao&#x27; (2022).">Sound design for the intro of the &#x27;Intoxicao&#x27; music video (2022).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-video="ig:DSdahr3jvcK,ig:DUGqcONDswq,ig:DTvnv8NDGdh" data-title="EIRAS" data-image="assets/work/eiras.jpg">
+        <button class="project-card other-card" type="button" data-video="ig:DSdahr3jvcK,ig:DUGqcONDswq,ig:DTvnv8NDGdh" data-cat="ads social" data-title="EIRAS" data-image="assets/work/eiras.jpg">
           <span class="card-media"><img src="assets/work/eiras.jpg" alt="" loading="lazy" decoding="async" /></span>
-          <span class="card-topline"><span class="card-index">07</span><span class="card-open" aria-hidden="true">↗</span></span>
+          <span class="card-topline"><span class="card-index">07</span><span class="card-badge" data-en="Social" data-es="Redes">Social</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">EIRAS</span><span class="card-services" data-credit-field="services" data-en="Advertising · Sound Design · Mix · 2025" data-es="Publicidad · Diseño de Sonido · Mezcla · 2025">Advertising · Sound Design · Mix · 2025</span><span class="card-description" data-en="A series of three advertising spots — sound design and mix (2025)." data-es="Serie de tres spots publicitarios — diseño de sonido y mezcla (2025).">A series of three advertising spots — sound design and mix (2025).</span></span>
         </button>
-        <button class="project-card other-card" type="button" data-video="yt:oBomINWbAPs" data-title="Bhavi — Bhavilonia" data-image="assets/work/bhavi.jpg">
+        <button class="project-card other-card" type="button" data-video="yt:oBomINWbAPs" data-cat="music" data-title="Bhavi — Bhavilonia" data-image="assets/work/bhavi.jpg">
           <span class="card-media"><img src="assets/work/bhavi.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">08</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Bhavi — Bhavilonia</span><span class="card-services" data-credit-field="services" data-en="Album Promo · Sound Design · 2024" data-es="Promo de Álbum · Diseño de Sonido · 2024">Album Promo · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Direction" data-es="Dirección">Direction</span><span class="credit-value">Agustín Portela</span></span></span><span class="card-description" data-en="Sound design for the promotional cut of the album &#x27;Bhavilonia&#x27; (2024)." data-es="Diseño de sonido para el corte promocional del álbum &#x27;Bhavilonia&#x27; (2024).">Sound design for the promotional cut of the album &#x27;Bhavilonia&#x27; (2024).</span></span>
         </button>
-        <div class="project-card other-card is-extra is-static" data-title="EA Sports FC" data-image="assets/work/ea-fc.jpg">
+        <div class="project-card other-card is-extra is-static" data-cat="ads" data-title="EA Sports FC" data-image="assets/work/ea-fc.jpg">
           <span class="card-media"><img src="assets/work/ea-fc.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">09</span></span>
-          <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">EA Sports FC</span><span class="card-services" data-credit-field="services" data-en="Advertising · Sound Design · 2026" data-es="Publicidad · Diseño de Sonido · 2026">Advertising · Sound Design · 2026</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Arena Collective</span></span></span><span class="card-description" data-en="Advertising spot for Mexico — EA Sports FC campaign for the new 'The World's Game' mode (2026)." data-es="Spot publicitario para México de la campaña EA Sports FC, promocionando su modo 'The World's Game' (2026).">Advertising spot for Mexico — EA Sports FC campaign for the new 'The World's Game' mode (2026).</span></span>
+          <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">EA Sports FC</span><span class="card-services" data-credit-field="services" data-en="Advertising · Sound Design · 2026" data-es="Publicidad · Diseño de Sonido · 2026">Advertising · Sound Design · 2026</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Arena Collective</span></span></span><span class="card-description" data-en="Advertising spot for Mexico — EA Sports FC campaign for the new 'The World's Game' mode (2026). Also produced for EA Sports FC Uruguay." data-es="Spot publicitario para México de la campaña EA Sports FC, promocionando su modo 'The World's Game' (2026). También realizado para EA Sports FC Uruguay.">Advertising spot for Mexico — EA Sports FC campaign for the new 'The World's Game' mode (2026). Also produced for EA Sports FC Uruguay.</span></span>
         </div>
-        <div class="project-card other-card is-extra is-static" data-title="Emilia — .mp3 Tour" data-image="assets/work/emilia.jpg">
+        <div class="project-card other-card is-extra is-static" data-cat="live" data-title="Emilia — .mp3 Tour" data-image="assets/work/emilia.jpg">
           <span class="card-media"><img src="assets/work/emilia.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">10</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Emilia — .mp3 Tour</span><span class="card-services" data-credit-field="services" data-en="Show · Sound Design · 2024" data-es="Show · Diseño de Sonido · 2024">Show · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Creative Direction" data-es="Dirección creativa">Creative Direction</span><span class="credit-value">Julita Conde</span></span></span><span class="card-description" data-en="Promo teasers, intro and show moments — Vélez (AR) and WiZink (ES), 2024." data-es="Teasers promocionales, intro y momentos del show — Vélez (AR) y WiZink (ES), 2024.">Promo teasers, intro and show moments — Vélez (AR) and WiZink (ES), 2024.</span></span>
         </div>
-        <button class="project-card other-card is-extra" type="button" data-video="yt:v-Oz3AGLFVI" data-title="Milo J — La Tola y el Velero" data-image="assets/work/milo-j.jpg">
+        <button class="project-card other-card is-extra" type="button" data-video="yt:v-Oz3AGLFVI" data-cat="music" data-title="Milo J — La Tola y el Velero" data-image="assets/work/milo-j.jpg">
           <span class="card-media"><img src="assets/work/milo-j.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">11</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Milo J — La Tola y el Velero</span><span class="card-services" data-credit-field="services" data-en="Track · Sound Design · 2025" data-es="Canción · Diseño de Sonido · 2025">Track · Sound Design · 2025</span><span class="card-description" data-en="Sound design for the song &#x27;La Tola y el Velero&#x27;, from the album &#x27;166&#x27; (2025)." data-es="Diseño de sonido para la canción &#x27;La Tola y el Velero&#x27;, del álbum &#x27;166&#x27; (2025).">Sound design for the song &#x27;La Tola y el Velero&#x27;, from the album &#x27;166&#x27; (2025).</span></span>
         </button>
-        <div class="project-card other-card is-extra is-static" data-title="Duki — Ameri" data-image="assets/work/duki.jpg">
+        <div class="project-card other-card is-extra is-static" data-cat="music" data-title="Duki — Ameri" data-image="assets/work/duki.jpg">
           <span class="card-media"><img src="assets/work/duki.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">12</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Duki — Ameri</span><span class="card-services" data-credit-field="services" data-en="Teaser · Sound Design · 2024" data-es="Teaser · Diseño de Sonido · 2024">Teaser · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Anestesia AV</span></span></span><span class="card-description" data-en="Sound design for the promo teaser of his album Ameri (2024)." data-es="Diseño de sonido para el teaser promocional de su disco Ameri (2024).">Sound design for the promo teaser of his album Ameri (2024).</span></span>
         </div>
-        <div class="project-card other-card is-extra is-static" data-title="Bizarrap — Show Buenos Aires" data-image="assets/work/bzrp-show.jpg">
+        <div class="project-card other-card is-extra is-static" data-cat="live" data-title="Bizarrap — Show Buenos Aires" data-image="assets/work/bzrp-show.jpg">
           <span class="card-media"><img src="assets/work/bzrp-show.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">13</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Bizarrap — Show Buenos Aires</span><span class="card-services" data-credit-field="services" data-en="Show Teaser · Sound Design · 2023" data-es="Teaser de Show · Diseño de Sonido · 2023">Show Teaser · Sound Design · 2023</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Creative Direction" data-es="Dirección creativa">Creative Direction</span><span class="credit-value">Julita Conde</span></span></span><span class="card-description" data-en="Sound design for the teaser of Bizarrap's Buenos Aires show (2023)." data-es="Diseño de sonido para el teaser del show de Bizarrap, Buenos Aires (2023).">Sound design for the teaser of Bizarrap's Buenos Aires show (2023).</span></span>
         </div>
-        <div class="project-card other-card is-extra is-static" data-title="Caliente TV" data-image="assets/work/caliente-tv.jpg">
+        <div class="project-card other-card is-extra is-static" data-cat="ads social" data-title="Caliente TV" data-image="assets/work/caliente-tv.jpg">
           <span class="card-media"><img src="assets/work/caliente-tv.jpg" alt="" loading="lazy" decoding="async" /></span>
-          <span class="card-topline"><span class="card-index">14</span></span>
-          <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Caliente TV</span><span class="card-services" data-credit-field="services" data-en="Advertising · Sound Design · 2026" data-es="Publicidad · Diseño de Sonido · 2026">Advertising · Sound Design · 2026</span><span class="card-description" data-en="Sound design for advertising spots (2026)." data-es="Diseño de sonido para spots publicitarios (2026).">Sound design for advertising spots (2026).</span></span>
+          <span class="card-topline"><span class="card-index">14</span><span class="card-badge" data-en="Social" data-es="Redes">Social</span></span>
+          <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Caliente TV</span><span class="card-services" data-credit-field="services" data-en="Advertising · Sound Design · 2026" data-es="Publicidad · Diseño de Sonido · 2026">Advertising · Sound Design · 2026</span><span class="card-description" data-en="Sound design for advertising spots for TV and social media (2026)." data-es="Diseño de sonido para spots publicitarios de TV y redes (2026).">Sound design for advertising spots for TV and social media (2026).</span></span>
         </div>
-        <div class="project-card other-card is-extra is-static" data-title="Nicki Nicole — Naiki" data-image="assets/work/nicki.jpg">
+        <div class="project-card other-card is-extra is-static" data-cat="music" data-title="Nicki Nicole — Naiki" data-image="assets/work/nicki.jpg">
           <span class="card-media"><img src="assets/work/nicki.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">15</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Nicki Nicole — Naiki</span><span class="card-services" data-credit-field="services" data-en="Teaser · Sound Design · 2024" data-es="Teaser · Diseño de Sonido · 2024">Teaser · Sound Design · 2024</span><span class="card-credits"><span class="credit-line" data-credit-field="production"><span class="credit-label" data-en="Production company" data-es="Productora">Production</span><span class="credit-value">Anestesia AV</span></span></span><span class="card-description" data-en="Sound design for the promo teaser of her album NAIKI (2024)." data-es="Diseño de sonido para el teaser promocional de su disco NAIKI (2024).">Sound design for the promo teaser of her album NAIKI (2024).</span></span>
         </div>
-        <button class="project-card other-card is-extra" type="button" data-video="yt:IyKkj3fZX1w@155" data-title="Milo J — A Vos" data-image="assets/work/milo-j.jpg">
+        <button class="project-card other-card is-extra" type="button" data-video="yt:IyKkj3fZX1w@155" data-cat="music" data-title="Milo J — A Vos" data-image="assets/work/milo-j.jpg">
           <span class="card-media"><img src="assets/work/milo-j.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">16</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Milo J — A Vos</span><span class="card-services" data-credit-field="services" data-en="Track · Sound Design · Mix · 2024" data-es="Canción · Diseño de Sonido · Mezcla · 2024">Track · Sound Design · Mix · 2024</span><span class="card-description" data-en="Sound design and mix for the outro of the song &#x27;A Vos&#x27; (2024)." data-es="Diseño de sonido y mezcla para el outro de la canción &#x27;A Vos&#x27; (2024).">Sound design and mix for the outro of the song &#x27;A Vos&#x27; (2024).</span></span>
         </button>
-        <button class="project-card other-card is-extra" type="button" data-video="yt:9M3wKdJyWGw" data-title="Cerounno — TUVEM" data-image="assets/work/cerounno.jpg">
+        <button class="project-card other-card is-extra" type="button" data-video="yt:9M3wKdJyWGw" data-cat="live" data-title="Cerounno — TUVEM" data-image="assets/work/cerounno.jpg">
           <span class="card-media"><img src="assets/work/cerounno.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">17</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Cerounno — TUVEM</span><span class="card-services" data-credit-field="services" data-en="Show · Sound Design · 2025" data-es="Show · Diseño de Sonido · 2025">Show · Sound Design · 2025</span><span class="card-description" data-en="Sound design for the show intro of the breakout Argentine rapper, presenting his album TUVEM (2025)." data-es="Diseño de sonido para la intro del show del rapero argentino revelación, presentación del álbum TUVEM (2025).">Sound design for the show intro of the breakout Argentine rapper, presenting his album TUVEM (2025).</span></span>
         </button>
-        <button class="project-card other-card is-extra" type="button" data-video="yt:ixwEWmGtt5I" data-title="Soui Uno — Punto de Quiebre" data-image="assets/work/soui-uno.jpg">
+        <button class="project-card other-card is-extra" type="button" data-video="yt:ixwEWmGtt5I" data-cat="music" data-title="Soui Uno — Punto de Quiebre" data-image="assets/work/soui-uno.jpg">
           <span class="card-media"><img src="assets/work/soui-uno.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">18</span><span class="card-open" aria-hidden="true">↗</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Soui Uno — Punto de Quiebre</span><span class="card-services" data-credit-field="services" data-en="Album · Sound Design · 2026" data-es="Álbum · Diseño de Sonido · 2026">Album · Sound Design · 2026</span><span class="card-description" data-en="Sound design for the breakout Argentine rapper's intro to her album 'Punto de Quiebre' (2026)." data-es="Diseño de sonido para la introducción del álbum 'Punto de Quiebre' de la rapera argentina revelación (2026).">Sound design for the breakout Argentine rapper's intro to her album 'Punto de Quiebre' (2026).</span></span>
         </button>
-        <div class="project-card other-card is-extra is-static" data-title="La Joaqui" data-image="assets/work/la-joaqui.jpg">
+        <div class="project-card other-card is-extra is-static" data-cat="live" data-title="La Joaqui" data-image="assets/work/la-joaqui.jpg">
           <span class="card-media"><img src="assets/work/la-joaqui.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">19</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">La Joaqui</span><span class="card-services" data-credit-field="services" data-en="Show · Sound Design · 2025" data-es="Show · Diseño de Sonido · 2025">Show · Sound Design · 2025</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Creative Direction" data-es="Dirección creativa">Creative Direction</span><span class="credit-value">Julita Conde</span></span></span><span class="card-description" data-en="Sound design for the show intro of the Argentine artist's 2025 presentation." data-es="Diseño de sonido para la intro del show de la artista argentina, presentación 2025.">Sound design for the show intro of the Argentine artist's 2025 presentation.</span></span>
         </div>
-        <div class="project-card other-card is-extra is-static" data-title="Radio Disney" data-image="assets/work/radio-disney.jpg">
+        <div class="project-card other-card is-extra is-static" data-cat="live" data-title="Radio Disney" data-image="assets/work/radio-disney.jpg">
           <span class="card-media"><img src="assets/work/radio-disney.jpg" alt="" loading="lazy" decoding="async" /></span>
           <span class="card-topline"><span class="card-index">20</span></span>
           <span class="card-copy"><span class="card-heading" role="heading" aria-level="3">Radio Disney</span><span class="card-services" data-credit-field="services" data-en="Show · Sound Design · 2023" data-es="Show · Diseño de Sonido · 2023">Show · Sound Design · 2023</span><span class="card-credits"><span class="credit-line" data-credit-field="direction"><span class="credit-label" data-en="Creative Direction" data-es="Dirección creativa">Creative Direction</span><span class="credit-value">Julita Conde</span></span></span><span class="card-description" data-en="Sound design for the intro of the Radio Disney Argentina show (2023)." data-es="Diseño de sonido para la introducción del show de Radio Disney Argentina (2023).">Sound design for the intro of the Radio Disney Argentina show (2023).</span></span>
@@ -868,7 +889,7 @@
         <div class="about-copy">
           <p data-en="Tundra is a sound studio founded by Jerónimo Sibuet in Buenos Aires. We work alongside production companies and agencies from picture lock to final delivery: sound design, foley, original music, dialogue edit and mix." data-es="Tundra es un estudio de sonido fundado por Jerónimo Sibuet en Buenos Aires. Trabajamos junto a productoras y agencias desde el montaje cerrado hasta la entrega final: diseño de sonido, foley, música original, edición de diálogos y mezcla.">Tundra is a sound studio founded by Jerónimo Sibuet in Buenos Aires. We work alongside production companies and agencies from picture lock to final delivery: sound design, foley, original music, dialogue edit and mix.</p>
           <p data-en="Our sound has run on campaigns for Adidas, EA Sports FC and Kinderland, on Bizarrap's Bizapop, and on teasers and live show intros for the region's biggest artists." data-es="Nuestro sonido estuvo en campañas para Adidas, EA Sports FC y Kinderland, en el Bizapop de Bizarrap, y en teasers e intros de shows de los artistas más grandes de la región.">Our sound has run on campaigns for Adidas, EA Sports FC and Kinderland, on Bizarrap's Bizapop, and on teasers and live show intros for the region's biggest artists.</p>
-          <p class="svc-line" data-en="Sound Design <span>·</span> Foley <span>·</span> Original Music <span>·</span> Dialogue Edit <span>·</span> Film Mix — Stereo, 5.1 &amp; Dolby Atmos <span>·</span> Sound Design for Live Shows" data-es="Diseño de Sonido <span>·</span> Foley <span>·</span> Música Original <span>·</span> Edición de Diálogos <span>·</span> Mezcla para cine — Estéreo, 5.1 y Dolby Atmos <span>·</span> Diseño de sonido para shows en vivo">Sound Design <span>·</span> Foley <span>·</span> Original Music <span>·</span> Dialogue Edit <span>·</span> Film Mix — Stereo, 5.1 &amp; Dolby Atmos <span>·</span> Sound Design for Live Shows</p>
+          <p class="svc-line" data-en="Sound Design <span>·</span> Foley <span>·</span> Original Music <span>·</span> Dialogue Edit <span>·</span> Film Mix — Stereo, 5.1 &amp; Dolby Atmos <span>·</span> Sound Design for Live Shows <span>·</span> Social &amp; Digital Campaigns" data-es="Diseño de Sonido <span>·</span> Foley <span>·</span> Música Original <span>·</span> Edición de Diálogos <span>·</span> Mezcla para cine — Estéreo, 5.1 y Dolby Atmos <span>·</span> Diseño de sonido para shows en vivo <span>·</span> Campañas para redes y digital">Sound Design <span>·</span> Foley <span>·</span> Original Music <span>·</span> Dialogue Edit <span>·</span> Film Mix — Stereo, 5.1 &amp; Dolby Atmos <span>·</span> Sound Design for Live Shows <span>·</span> Social &amp; Digital Campaigns</p>
           <div class="credit-list" aria-label="Selected clients and artists">
             <span>Bizarrap</span><span>Emilia</span><span>Duki</span><span>Nicki Nicole</span><span>María Becerra</span><span>Milo J</span><span>Eladio Carrión</span><span>Rauw Alejandro</span><span>Ysy A</span><span>Khea</span><span>EA Sports FC</span><span>Adidas</span><span>Kinderland</span><span>Radio Disney</span><span>AYNOTDEAD</span><span>Branca</span><span>Eiras</span>
           </div>
@@ -1185,6 +1206,47 @@
       if (event.key === 'Escape' && lightbox.open) closeLightbox();
     });
 
+    /* Glide navigation: eased scroll to each section with a small arrival cue. */
+    (function initGlide() {
+      const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const ease = (t) => (t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2);
+      let raf = null;
+      const navOffset = () => { const n = document.querySelector('.site-nav'); return (n ? n.getBoundingClientRect().height : 0) + 18; };
+      const arrive = (target) => {
+        target.classList.remove('arrived'); void target.offsetWidth; target.classList.add('arrived');
+        window.setTimeout(() => target.classList.remove('arrived'), 1800);
+      };
+      function glideTo(target) {
+        const startY = window.scrollY;
+        const endY = target.id === 'top' ? 0 : Math.max(0, target.getBoundingClientRect().top + startY - navOffset());
+        const dist = Math.abs(endY - startY);
+        cancelAnimationFrame(raf);
+        if (reduce || dist < 4) { window.scrollTo(0, endY); arrive(target); return; }
+        const duration = Math.min(1500, Math.max(700, dist * 0.45));
+        const t0 = performance.now();
+        const stop = () => cancelAnimationFrame(raf);
+        window.addEventListener('wheel', stop, { once: true, passive: true });
+        window.addEventListener('touchstart', stop, { once: true, passive: true });
+        const step = (now) => {
+          const p = Math.min(1, (now - t0) / duration);
+          window.scrollTo(0, startY + (endY - startY) * ease(p));
+          if (p < 1) raf = requestAnimationFrame(step); else arrive(target);
+        };
+        raf = requestAnimationFrame(step);
+      }
+      document.addEventListener('click', (event) => {
+        const link = event.target.closest('a[href^="#"]');
+        if (!link) return;
+        const id = link.getAttribute('href').slice(1);
+        if (!id || id === 'main') return;
+        const target = document.getElementById(id);
+        if (!target) return;
+        event.preventDefault();
+        glideTo(target);
+        if (history.replaceState) history.replaceState(null, '', '#' + id);
+      });
+    })();
+
     /* Quote / brief buttons: choose email app, Gmail in the browser, or copy the address. */
     function gmailFor(lang) {
       const m = mailtoFor(lang);
@@ -1244,6 +1306,25 @@
     document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeMailMenu(); });
     window.addEventListener('resize', closeMailMenu);
     paintMailMenu();
+
+    /* Work filters: show every matching piece; "All" restores the 8 + More layout. */
+    document.querySelectorAll('.filter-bar .chip').forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const f = chip.dataset.filter;
+        const grid = document.getElementById('otherGrid');
+        const more = document.querySelector('.more-wrap');
+        document.querySelectorAll('.filter-bar .chip').forEach((c) => {
+          const on = c === chip; c.classList.toggle('active', on); c.setAttribute('aria-pressed', String(on));
+        });
+        grid.querySelectorAll('.project-card').forEach((card) => {
+          card.hidden = f !== 'all' && !(card.dataset.cat || '').split(' ').includes(f);
+        });
+        grid.classList.toggle('filtered', f !== 'all');
+        if (more) more.hidden = f !== 'all';
+        grid.classList.remove('refresh'); void grid.offsetWidth; grid.classList.add('refresh');
+        window.setTimeout(() => grid.classList.remove('refresh'), 700);
+      });
+    });
 
     /* More work: first eight on show, the rest on demand. */
     function paintMore() {
